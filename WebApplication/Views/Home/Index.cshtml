@@ -1,0 +1,28 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <form asp-action="Login" >
+                <div class="form-group">
+                <input type="submit" value="Login" class="btn btn-primary" />
+            </div>
+    </form>
+    <form asp-action="Guest">
+                <div class="form-group">
+                <input type="submit" value="Guest" class="btn btn-primary" />
+            </div>
+    </form>
+    <form asp-action="CreateUser">
+                <div class="form-group">
+                <input type="submit" value="Create Account" class="btn btn-primary" />
+            </div>
+    </form>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+

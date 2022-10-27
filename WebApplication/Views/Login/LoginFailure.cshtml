@@ -1,0 +1,26 @@
+﻿@model Scheduler.Models.User
+
+<div>
+    <h4>User Login was unsuccessful</h4>
+    <h4>The details provided were incorrect </h4>
+
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Username)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Username)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Password)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Password)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Username">Edit</a> |
+    <a asp-action="Index">Return to Login</a>
+</div>

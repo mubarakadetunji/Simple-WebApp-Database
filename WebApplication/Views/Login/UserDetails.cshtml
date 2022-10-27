@@ -1,0 +1,118 @@
+﻿@using Scheduler.Models
+@model (List<Scheduler.Models.Concentration>,User)
+
+
+<div class = "container">
+    <h4>Computer Science Bachelors</h4>
+    @if (Model.Item1 != null)
+    {
+        <h4>Concentrations</h4>
+        <table class="table table-hover table-bordered">
+        <thead>
+            <tr>
+                <th>Concentration Name</th>
+                <th>Concentration Requirements</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(Concentration conc in Model.Item1)
+                {
+                    <tr>
+                        <td>@conc.ConcentrationName</td>
+                        <td>@conc.Requirements</td>
+                    </tr>
+                }
+           
+        </table>
+    }
+    else
+    {
+        <h4>No Concentration</h4>
+    }
+ </div>
+<div>
+      <form asp-action="GenerateList">
+          <h2>Recommended Courses</h2>
+          <div class="form-group">
+              <label for = "qualities" >Qualities </label> 
+              <input type="text" name="Qualities" id="Qualities" placeholder="Qualities"/>
+           </div>
+           <div class="form-group">
+              <label for = "Count" >How Many: </label> 
+              <input type="number" name="Count" id="Count" min = "1"/>
+           </div>
+           <div class="form-group">
+              <input type="submit" value="Generate" class="btn btn-success" />
+           </div>
+      </form>
+      <br>
+      <br>    
+      <form asp-action="GenerateSchedule">
+          <h2>Schedule</h2>
+          <div class="form-group">
+              <label  for="term">Choose a Term: </label> 
+               <select name="term" id="term">
+                <option value="fall">Fall</option>
+                <option value="winter">Winter</option>
+               </select>
+           </div>
+           <div class="form-group">
+              <label for = "Count" >How Many: </label> 
+              <input type="number" name="Count" id="Count" min = "1"/>
+           </div>
+           <div class="form-group">
+              <input type="submit" value="Generate" class="btn btn-success" />
+           </div>
+      </form>
+
+        
+    <br>
+    <br>
+    @if(Model.Item2.Registered == true)
+    {
+
+    
+        <form asp-action="RateCourse">
+              <h2>Rate Course</h2>
+                <div class="form-group">
+                  <label for = "course" >Course </label> 
+                  <input type="text" name="Course" id="Course" placeholder="Course"/>
+               </div>
+               <div class="form-group">
+                  <label for = "CourseFeedback" >Course Feedback </label> 
+                  <input type="text" name="CourseFeedback" id="CourseFeedback" placeholder="Feedback"/>
+               </div>
+               <div class="form-group">
+                   <label for="Rating">Rating</label> 
+                   <input type="number" name="PRating"  min="1" max="10"/>
+               </div>
+               <div class="form-group">
+                  <input type="submit" value="Rate" class="btn btn-success" />
+               </div>
+          </form>
+    
+        <br>
+        <br>
+        <form asp-action="RateProf">
+              <h2>Rate Professor</h2>
+                <div class="form-group">
+                  <label for = "Professor" > Professor </label> 
+                  <input type="text" name="Professor" id="Professor" placeholder="Professor"/>
+               </div>
+               <div class="form-group">
+                  <label for = "ProfessorFeedback" >Professor Feedback </label> 
+                  <input type="text" name="ProfessorFeedback" id="ProfessorFeedback" placeholder="Feedback"/>
+               </div>
+               <div class="form-group">
+                   <label for="Rating">Rating</label> 
+                   <input type="number" name="PRating"  min="1" max="10">
+               </div>
+               <div class="form-group">
+                  <input type="submit" value="Rate" class="btn btn-success" />
+               </div>
+        </form>
+    }
+</div>
+<div>
+   <a asp-action="Index">Logout</a>
+</div>
